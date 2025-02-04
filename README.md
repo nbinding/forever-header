@@ -16,7 +16,7 @@ An interactive web-based tool inspired by the note headers used in the ✱Foreve
 
 ## **Live Demo**
 
-[**Try Forever Header**](https://yourusername.github.io/forever-header/)  
+[**Try Forever Header**](https://nbinding.github.io/forever-header/)  
 *(Hosted via GitHub Pages.)*
 
 ---
@@ -45,11 +45,46 @@ An interactive web-based tool inspired by the note headers used in the ✱Foreve
 To run the tool locally:
 
 1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/forever-header.git
+
+   git clone https://github.com/nbinding/forever-header.git
 
 2.	Navigate to the project directory:
-   ```bash
+
    cd forever-header
 
 3.	Open index.html in your preferred web browser.
+
+## **Built With**
+
+- **HTML5**: For the structure.
+- **CSS3**: For styling and responsiveness.
+- **JavaScript**: To handle interactivity and dynamic SVG generation.
+- **Bootstrap**: For layout and design consistency.
+- **Font Awesome**: For adding versatile icons.
+- **Canvg**: To export SVGs as high-quality PNGs.
+
+---
+
+## **License**
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## **Contributing**
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+---
+
+## **Support**
+
+If you find this tool useful, consider [buying me a coffee](www.buymeacoffee.com/nbinding) ☕ to support its development.
+
+---
+
+## **Contact**
+
+For questions or feedback:
+- GitHub: [yourusername](https://github.com/yourusername)
+- Email: your-email@example.com
