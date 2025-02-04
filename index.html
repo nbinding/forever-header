@@ -140,6 +140,32 @@
             }, 100);
         });
 
+        // Randomize Font Awesome icon
+        document.getElementById("randomize-icon").addEventListener("click", () => {
+            const sampleIcons = [
+                "fa-solid fa-heart",
+                "fa-solid fa-star",
+                "fa-solid fa-rocket",
+                "fa-solid fa-bell",
+                "fa-solid fa-envelope",
+                "fa-solid fa-camera",
+                "fa-solid fa-car",
+                "fa-solid fa-tree",
+                "fa-solid fa-sun",
+                "fa-solid fa-moon",
+                "fa-solid fa-coffee",
+                "fa-solid fa-thumbs-up",
+                "fa-solid fa-check-circle"
+            ];
+    
+    // Pick a random icon from the array
+    const randomIcon = sampleIcons[Math.floor(Math.random() * sampleIcons.length)];
+    
+    // Update the input value and apply the icon
+    document.getElementById("icon-input").value = randomIcon;
+    document.getElementById("apply-icon").click();
+});
+
         // Toggle dither colour for background and icon
         document.getElementById("toggle-dither").addEventListener("click", () => {
             const halftonePath = document.getElementById("halftone-path");
