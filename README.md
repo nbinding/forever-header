@@ -36,7 +36,8 @@ An interactive web-based tool inspired by the note headers used in the Forever â
 
 ## **Screenshots**
 
-![image](https://github.com/user-attachments/assets/af5a7edb-d4db-46cb-aa01-287acaaebd96)
+![image](https://github.com/user-attachments/assets/c5ad7c70-21c3-421e-81a1-150ac9bf09cb)
+
 
 
 ---
