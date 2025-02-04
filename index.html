@@ -74,6 +74,87 @@
         }
     </style>
 </head>
+    <script>
+    let ditherColour = "black";
+
+    function updateIcon(unicode) {
+        document.getElementById("fa-icon-overlay").innerHTML = unicode;
+    }
+
+    document.getElementById("apply-icon").addEventListener("click", () => {
+        const inputValue = document.getElementById("icon-input").value.trim();
+        const hiddenIcon = document.createElement("i");
+        hiddenIcon.className = inputValue;
+        document.body.appendChild(hiddenIcon);
+
+        setTimeout(() => {
+            const computedStyle = window.getComputedStyle(hiddenIcon, "::before");
+            const unicode = computedStyle.content.replace(/['"]/g, "");
+            if (unicode) {
+                updateIcon(unicode);
+            } else {
+                alert("Invalid Font Awesome class. Try another.");
+            }
+            document.body.removeChild(hiddenIcon);
+        }, 100);
+    });
+
+    document.getElementById("toggle-dither").addEventListener("click", () => {
+        const halftonePath = document.getElementById("halftone-path");
+        const overlayElement = document.getElementById("fa-icon-overlay");
+
+        ditherColour = ditherColour === "black" ? "white" : "black";
+        halftonePath.setAttribute("fill", `url(#halftone-${ditherColour})`);
+        overlayElement.setAttribute("fill", `url(#halftone-${ditherColour === "black" ? "white" : "black"})`);
+    });
+
+    document.getElementById("randomize-shape").addEventListener("click", () => {
+        const path = document.getElementById("halftone-path");
+        const randomY1 = Math.random() * 100 + 50;
+        const randomY2 = Math.random() * 100 + 50;
+        path.setAttribute("d", `M0 100 Q 200 ${randomY1}, 400 100 T 800 ${randomY2} V 200 H 0 Z`);
+    });
+
+    document.getElementById("randomize-icon").addEventListener("click", () => {
+        const sampleIcons = [
+            "fa-solid fa-heart",
+            "fa-solid fa-star",
+            "fa-solid fa-rocket",
+            "fa-solid fa-bell",
+            "fa-solid fa-envelope",
+            "fa-solid fa-camera",
+            "fa-solid fa-car",
+            "fa-solid fa-tree",
+            "fa-solid fa-sun",
+            "fa-solid fa-moon",
+            "fa-solid fa-coffee",
+            "fa-solid fa-thumbs-up",
+            "fa-solid fa-check-circle"
+        ];
+        const randomIcon = sampleIcons[Math.floor(Math.random() * sampleIcons.length)];
+        document.getElementById("icon-input").value = randomIcon;
+        document.getElementById("apply-icon").click();
+    });
+
+    document.getElementById("download-image").addEventListener("click", async () => {
+        const svgElement = document.getElementById("halftone-svg");
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = 800;
+        canvas.height = 200;
+
+        const svgData = new XMLSerializer().serializeToString(svgElement);
+
+        const canvgInstance = await canvg.Canvg.fromString(ctx, svgData);
+        await canvgInstance.render();
+
+        const link = document.createElement("a");
+        link.download = "forever-header.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    });
+</script>
 <body>
 
     <!-- Header -->
