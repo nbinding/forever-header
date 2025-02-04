@@ -18,10 +18,7 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Forever ✱ Header – Halftone Header Design Tool" />
-    <meta
-      property="og:description"
-      content="A customisable halftone header generator for notes, inspired by Forever Notes."
-    />
+    <meta property="og:description" content="A customisable halftone header generator for notes, inspired by Forever Notes." />
     <meta property="og:image" content="https://nbinding.github.io/forever-header/screenshot.png" />
     <meta property="og:url" content="https://nbinding.github.io/forever-header/" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -33,7 +30,10 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Canvg Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvg@3.0.7/lib/umd.min.js"></script>
@@ -43,46 +43,49 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        min-height: 100vh;
         margin: 0;
         background-color: #f0f0f0;
-      }
-
-      .rounded-box {
-        width: 800px;
-        height: 200px;
-        border-radius: 35px 35px 0 0;
-        /* Top corners rounded, bottom corners sharp */
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ccc;
-        margin-bottom: 20px;
-      }
-
-      svg {
-        width: 100%;
-        height: 100%;
-      }
-
-      .btn-container {
-        max-width: 800px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
+        padding: 10px;
       }
 
       .header {
         font-size: 2rem;
         font-weight: bold;
-        margin-top: 20px;
-        margin-bottom: 10px;
+        margin: 20px 0 10px;
+        text-align: center;
       }
 
+      .rounded-box {
+        width: 100%;
+        max-width: 800px;
+        border-radius: 35px 35px 0 0;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+      }
+      .rounded-box svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      /* Group controls into sections */
+      .btn-container {
+        width: 100%;
+        max-width: 800px;
+      }
+      .control-section {
+        margin-bottom: 15px;
+      }
+      .control-section h6 {
+        margin-bottom: 5px;
+      }
+      /* Use Bootstrap grid classes for layout */
       .footer {
         margin-top: 20px;
         font-size: 0.9rem;
+        text-align: center;
       }
     </style>
   </head>
@@ -91,7 +94,7 @@
     <div class="header">Forever ✱ Header</div>
 
     <!-- GitHub Repo Link -->
-    <div>
+    <div class="mb-3">
       <a href="https://github.com/nbinding/forever-header" target="_blank">
         <img
           src="https://img.shields.io/badge/GitHub-View%20on%20GitHub-black?style=for-the-badge&logo=github"
@@ -102,7 +105,12 @@
 
     <!-- SVG Container -->
     <div class="rounded-box">
-      <svg id="halftone-svg" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        id="halftone-svg"
+        viewBox="0 0 800 200"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet"
+      >
         <defs>
           <style type="text/css">
             @font-face {
@@ -115,12 +123,16 @@
             }
           </style>
 
-          <!-- Dither Patterns -->
-          <pattern id="halftone-black" width="8" height="8" patternUnits="userSpaceOnUse">
-            <circle cx="4" cy="4" r="2" fill="#000" />
+          <!-- Diamond-style Dither Patterns -->
+          <pattern id="halftone-black" width="16" height="16" patternUnits="userSpaceOnUse">
+            <circle cx="8" cy="4" r="2" fill="#000" />
+            <circle cx="0" cy="12" r="2" fill="#000" />
+            <circle cx="16" cy="12" r="2" fill="#000" />
           </pattern>
-          <pattern id="halftone-white" width="8" height="8" patternUnits="userSpaceOnUse">
-            <circle cx="4" cy="4" r="2" fill="#fff" />
+          <pattern id="halftone-white" width="16" height="16" patternUnits="userSpaceOnUse">
+            <circle cx="8" cy="4" r="2" fill="#fff" />
+            <circle cx="0" cy="12" r="2" fill="#fff" />
+            <circle cx="16" cy="12" r="2" fill="#fff" />
           </pattern>
 
           <!-- Clip Path Matching Rounded Corners -->
@@ -130,16 +142,19 @@
 
           <!-- Clip Path for Dithering Pattern (covers the bottom area) -->
           <clipPath id="clip-transparent">
-            <!-- This path (set on element with id "halftone-path") defines the bottom area -->
             <path id="halftone-path" d="M0 100 Q200 50, 400 100 T800 100 L800 200 L0 200 Z" />
           </clipPath>
         </defs>
 
         <g clip-path="url(#clip-rounded)">
           <!-- Top Background (Off-white) following the chosen curve -->
-          <!-- Compound path with fill-rule="evenodd" subtracts the inner (curve + bottom) portion -->
-          <path id="top-bg" fill="#c0c0c0" fill-rule="evenodd" d="" shape-rendering="geometricPrecision" />
-
+          <path
+            id="top-bg"
+            fill="#c0c0c0"
+            fill-rule="evenodd"
+            d=""
+            shape-rendering="geometricPrecision"
+          />
           <!-- Halftone Pattern (Bottom Area) -->
           <path
             id="dither-path"
@@ -147,7 +162,6 @@
             fill="url(#halftone-black)"
             clip-path="url(#clip-transparent)"
           />
-
           <!-- Font Awesome Icon -->
           <text
             id="fa-icon-overlay"
@@ -167,28 +181,62 @@
 
     <!-- Controls -->
     <div class="btn-container">
-      <!-- Dropdown for selecting shape type -->
-      <select id="shape-selector" class="form-select w-auto">
-        <option value="wavy">Wavy</option>
-        <option value="mountain">Mountain Range</option>
-        <option value="circles">Circles</option>
-        <option value="sine">Sine Wave</option>
-        <option value="scalloped">Scalloped</option>
-      </select>
-      <!-- Renamed button -->
-      <button id="apply-shape" class="btn btn-dark">Apply/Randomise Shape</button>
-      <button id="randomise-icon" class="btn btn-dark">Randomise Icon</button>
-      <input
-        id="icon-input"
-        type="text"
-        class="form-control w-auto d-inline"
-        placeholder="Enter Font Awesome class (e.g., fa-solid fa-star)"
-      />
-      <button id="apply-icon" class="btn btn-dark">Apply Icon</button>
-      <!-- New button to toggle display of the Font Awesome icon -->
-      <button id="toggle-icon" class="btn btn-dark">Toggle Icon Display</button>
-      <button id="toggle-dither" class="btn btn-dark">Toggle Dither Colour</button>
-      <button id="download-image" class="btn btn-dark">Download as PNG</button>
+      <!-- Shape Controls Section -->
+      <div class="control-section">
+        <h6>Shape Controls</h6>
+        <div class="row">
+          <div class="col-12">
+            <div class="input-group">
+              <select id="shape-selector" class="form-select">
+                <option value="mountain">Mountain Range</option>
+                <option value="circles">Circles</option>
+                <option value="sine">Sine Wave</option>
+                <option value="scalloped">Scalloped</option>
+              </select>
+              <button id="apply-shape" class="btn btn-dark">Apply/Randomise Shape</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Icon Controls Section -->
+      <div class="control-section">
+        <h6>Icon Controls</h6>
+        <div class="row">
+          <div class="col-12">
+            <div class="input-group">
+              <input
+                id="icon-input"
+                type="text"
+                class="form-control"
+                placeholder="Enter Font Awesome class (e.g., fa-solid fa-star)"
+              />
+              <button id="apply-icon" class="btn btn-dark">Apply Icon</button>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            <button id="randomise-icon" class="btn btn-dark w-100">Randomise Icon</button>
+          </div>
+          <div class="col-6">
+            <button id="toggle-icon" class="btn btn-dark w-100">Toggle Icon Display</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Actions Section -->
+      <div class="control-section">
+        <h6>Other Actions</h6>
+        <div class="row">
+          <div class="col-6">
+            <button id="toggle-dither" class="btn btn-dark w-100">Toggle Dither Colour</button>
+          </div>
+          <div class="col-6">
+            <button id="download-image" class="btn btn-dark w-100">Download as PNG</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -200,13 +248,6 @@
       let ditherColour = "black";
 
       // --- Shape Generator Functions ---
-      // All functions now end with " L800 200 L0 200 Z" for consistency.
-      function generateWavyPath() {
-        const randomY1 = Math.random() * 100 + 50;
-        const randomY2 = Math.random() * 100 + 50;
-        return `M0 100 Q200 ${randomY1}, 400 100 T800 ${randomY2} L800 200 L0 200 Z`;
-      }
-
       function generateMountainRangePath() {
         let path = "M0 150";
         const segments = 8;
@@ -219,7 +260,6 @@
         path += " L800 200 L0 200 Z";
         return path;
       }
-
       function generateCirclesPath() {
         let path = "M0 100";
         let x = 0;
@@ -236,7 +276,6 @@
         path += " L800 200 L0 200 Z";
         return path;
       }
-
       function generateSinePath() {
         const amplitude = Math.random() * 30 + 20;
         const frequency = Math.random() * 2 + 1;
@@ -251,7 +290,6 @@
         path += " L800 200 L0 200 Z";
         return path;
       }
-
       function generateScallopedPath() {
         let path = "M0 100";
         let x = 0;
@@ -275,7 +313,6 @@
       function updateIcon(unicode) {
         document.getElementById("fa-icon-overlay").innerHTML = unicode;
       }
-
       document.getElementById("apply-icon").addEventListener("click", () => {
         const inputValue = document.getElementById("icon-input").value.trim();
         const hiddenIcon = document.createElement("i");
@@ -292,7 +329,6 @@
           document.body.removeChild(hiddenIcon);
         }, 100);
       });
-
       document.getElementById("randomise-icon").addEventListener("click", () => {
         const sampleIcons = [
           "fa-solid fa-heart",
@@ -313,7 +349,6 @@
         document.getElementById("icon-input").value = randomIcon;
         document.getElementById("apply-icon").click();
       });
-
       document.getElementById("toggle-dither").addEventListener("click", () => {
         const ditherPath = document.getElementById("dither-path");
         const overlayElement = document.getElementById("fa-icon-overlay");
@@ -321,39 +356,26 @@
         ditherPath.setAttribute("fill", `url(#halftone-${ditherColour})`);
         overlayElement.setAttribute("fill", `url(#halftone-${ditherColour === "black" ? "white" : "black"})`);
       });
-
-      // --- Toggle Font Awesome Icon Display ---
       document.getElementById("toggle-icon").addEventListener("click", () => {
         const icon = document.getElementById("fa-icon-overlay");
-        // Toggle using the SVG 'visibility' attribute
         if (icon.getAttribute("visibility") === "hidden") {
           icon.setAttribute("visibility", "visible");
         } else {
           icon.setAttribute("visibility", "hidden");
         }
       });
-
-      // --- Update Shape and Compound Top Background ---
       function updateShape(newPath) {
-        // Update bottom (dither) path
         document.getElementById("halftone-path").setAttribute("d", newPath);
         document.getElementById("dither-path").setAttribute("d", newPath);
-
-        // Extract the curve part by removing the ending " L800 200 L0 200 Z"
         const curvePart = newPath.replace(/ L800 200 L0 200 Z$/, "");
-        // Use a small epsilon offset to avoid a visible seam
         const epsilon = 0.1;
         const topBgPath = `M0,0 H800 V200 H0 Z ${curvePart} L800 ${200 - epsilon} L0 ${200 - epsilon} Z`;
         document.getElementById("top-bg").setAttribute("d", topBgPath);
       }
-
       document.getElementById("apply-shape").addEventListener("click", () => {
         const shapeType = document.getElementById("shape-selector").value;
         let newPath;
         switch (shapeType) {
-          case "wavy":
-            newPath = generateWavyPath();
-            break;
           case "mountain":
             newPath = generateMountainRangePath();
             break;
@@ -367,17 +389,14 @@
             newPath = generateScallopedPath();
             break;
           default:
-            newPath = generateWavyPath();
+            newPath = generateSinePath();
         }
         updateShape(newPath);
       });
-
-      // Set a default shape on page load
       document.addEventListener("DOMContentLoaded", () => {
-        const defaultPath = generateWavyPath();
+        const defaultPath = generateSinePath();
         updateShape(defaultPath);
       });
-
       document.getElementById("download-image").addEventListener("click", async () => {
         const svgElement = document.getElementById("halftone-svg");
         const canvas = document.createElement("canvas");
