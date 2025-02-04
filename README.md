@@ -1,6 +1,6 @@
 # **Forever Header**
 
-An interactive web-based tool inspired by the note headers used in the ✱Forever Notes project. **Forever Header** allows users to create customisable halftone-style designs with wavy backgrounds and Font Awesome icons, which can be exported as high-quality PNGs for use in notes, presentations, and more.
+An interactive web-based tool inspired by the note headers used in the Forever ✱ Notes project. **Forever Header** allows users to create customisable halftone-style designs with wavy backgrounds and Font Awesome icons, which can be exported as high-quality PNGs for use in notes, presentations, and more.
 
 ---
 
