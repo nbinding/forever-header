@@ -45,11 +45,11 @@ An interactive web-based tool inspired by the note headers used in the Forever â
 
 To run the tool locally:
 
-1. Clone this repository:
+1. Clone this repository
 
    git clone https://github.com/nbinding/forever-header.git
 
-2.	Navigate to the project directory:
+3.	Navigate to the project directory:
 
    cd forever-header
 
