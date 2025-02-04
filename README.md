@@ -86,5 +86,4 @@ If you find this tool useful, consider [buying me a coffee](www.buymeacoffee.com
 ## **Contact**
 
 For questions or feedback:
-- GitHub: [yourusername](https://github.com/yourusername)
-- Email: your-email@example.com
+- GitHub: [nbinding](https://github.com/nbinding)
