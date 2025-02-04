@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halftone Tool</title>
-    
+    <title>Forever ✱ Header</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Forever Header – A halftone-style header design tool inspired by the Forever ✱ Notes project. Create custom wavy backgrounds with Font Awesome icons and export them as PNGs.">
-    <meta name="keywords" content="Forever Header, Forever Notes, halftone, design tool, SVG, Font Awesome, GitHub Pages">
+    <meta name="description"
+        content="Forever ✱ Header – A halftone-style header design tool inspired by the Forever ✱ Notes project. Create custom wavy backgrounds with Font Awesome icons and export them as PNGs.">
+    <meta name="keywords"
+        content="Forever ✱ Header, Forever ✱ Notes, halftone, design tool, SVG, Font Awesome, GitHub Pages">
     <meta name="author" content="Nathan Binding">
-    
+
     <!-- Open Graph Meta Tags (For Social Media Previews) -->
     <meta property="og:title" content="Forever ✱ Header – Halftone Header Design Tool">
-    <meta property="og:description" content="A customisable halftone header generator for notes, inspired by Forever Notes.">
+    <meta property="og:description"
+        content="A customisable halftone header generator for notes, inspired by Forever Notes.">
     <meta property="og:image" content="https://nbinding.github.io/forever-header/screenshot.png">
     <meta property="og:url" content="https://nbinding.github.io/forever-header/">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-   
+
     <!-- Canvg Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvg@3.0.7/lib/umd.min.js"></script>
 
@@ -36,19 +40,23 @@
             margin: 0;
             background-color: #f0f0f0;
         }
+
         .rounded-box {
             width: 800px;
             height: 200px;
-            border-radius: 35px 35px 0 0; /* Top corners rounded, bottom corners sharp */
+            border-radius: 35px 35px 0 0;
+            /* Top corners rounded, bottom corners sharp */
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border: 1px solid #ccc;
             margin-bottom: 20px;
         }
+
         svg {
             width: 100%;
             height: 100%;
         }
+
         .btn-container {
             max-width: 800px;
             display: flex;
@@ -56,9 +64,33 @@
             justify-content: center;
             gap: 10px;
         }
+
+        .header {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
+
 <body>
+
+    <!-- Header -->
+    <div class="header">Forever ✱ Header</div>
+
+    <!-- GitHub Repo Link -->
+    <div>
+        <a href="https://github.com/nbinding/forever-header" target="_blank">
+            <img src="https://img.shields.io/badge/GitHub-View%20on%20GitHub-black?style=for-the-badge&logo=github"
+                alt="GitHub Repository">
+        </a>
+    </div>
 
     <div class="rounded-box">
         <svg id="halftone-svg" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
@@ -68,6 +100,7 @@
                         font-family: 'FontAwesome';
                         src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2') format('woff2');
                     }
+
                     text {
                         font-family: 'FontAwesome';
                     }
@@ -90,14 +123,16 @@
                         Q 800,0 800,35 
                         L 800,200 
                         L 0,200 
-                        Z"/>
+                        Z" />
                 </clipPath>
             </defs>
 
             <g clip-path="url(#clip-rounded)">
                 <rect width="800" height="200" fill="#c0c0c0" />
-                <path id="halftone-path" d="M0 100 Q 200 50, 400 100 T 800 100 V 200 H 0 Z" fill="url(#halftone-black)" />
-                <text id="fa-icon-overlay" x="100" y="50%" text-anchor="middle" font-family="FontAwesome" font-size="140" fill="url(#halftone-white)" dominant-baseline="middle">
+                <path id="halftone-path" d="M0 100 Q 200 50, 400 100 T 800 100 V 200 H 0 Z"
+                    fill="url(#halftone-black)" />
+                <text id="fa-icon-overlay" x="100" y="50%" text-anchor="middle" font-family="FontAwesome"
+                    font-size="140" fill="url(#halftone-white)" dominant-baseline="middle">
                     &#xf005; <!-- Default star icon -->
                 </text>
             </g>
@@ -107,10 +142,15 @@
     <div class="btn-container">
         <button id="randomize-shape" class="btn btn-dark">Randomize Shape</button>
         <button id="randomize-icon" class="btn btn-dark">Randomize Icon</button>
-        <input id="icon-input" type="text" class="form-control w-auto d-inline" placeholder="Enter Font Awesome class (e.g., fa-solid fa-star)" />
+        <input id="icon-input" type="text" class="form-control w-auto d-inline"
+            placeholder="Enter Font Awesome class (e.g., fa-solid fa-star)" />
         <button id="apply-icon" class="btn btn-dark">Apply Icon</button>
         <button id="toggle-dither" class="btn btn-dark">Toggle Dither Colour</button>
         <button id="download-image" class="btn btn-dark">Download as PNG</button>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        Made with ❤️ by <a href="https://github.com/nbinding" target="_blank">nbinding</a>
     </div>
 
     <script>
@@ -157,14 +197,14 @@
                 "fa-solid fa-thumbs-up",
                 "fa-solid fa-check-circle"
             ];
-    
-    // Pick a random icon from the array
-    const randomIcon = sampleIcons[Math.floor(Math.random() * sampleIcons.length)];
-    
-    // Update the input value and apply the icon
-    document.getElementById("icon-input").value = randomIcon;
-    document.getElementById("apply-icon").click();
-});
+
+            // Pick a random icon from the array
+            const randomIcon = sampleIcons[Math.floor(Math.random() * sampleIcons.length)];
+
+            // Update the input value and apply the icon
+            document.getElementById("icon-input").value = randomIcon;
+            document.getElementById("apply-icon").click();
+        });
 
         // Toggle dither colour for background and icon
         document.getElementById("toggle-dither").addEventListener("click", () => {
@@ -184,7 +224,7 @@
             path.setAttribute("d", `M0 100 Q 200 ${randomY1}, 400 100 T 800 ${randomY2} V 200 H 0 Z`);
         });
 
-        // Download SVG as PNG
+        // Download SVG as PNG with dynamic filename
         document.getElementById("download-image").addEventListener("click", async () => {
             const svgElement = document.getElementById("halftone-svg");
             const canvas = document.createElement("canvas");
@@ -197,12 +237,26 @@
             const canvgInstance = await canvg.Canvg.fromString(ctx, svgData);
             await canvgInstance.render();
 
+            // Get Font Awesome class name from input
+            let iconClass = document.getElementById("icon-input").value.trim();
+
+            // Extract only the last part of the Font Awesome class (e.g., 'fa-star')
+            let iconName = iconClass.split(" ").pop() || "default-icon";
+
+            // Format icon name safely for a filename
+            iconName = iconName.replace(/^fa-/, "").replace(/[^a-zA-Z0-9_-]/g, "");
+
+            // Create the filename
+            const filename = `forever-header-${iconName}.png`;
+
+            // Download the image with the dynamic filename
             const link = document.createElement("a");
-            link.download = "halftone-design.png";
+            link.download = filename;
             link.href = canvas.toDataURL("image/png");
             link.click();
         });
     </script>
 
 </body>
+
 </html>
