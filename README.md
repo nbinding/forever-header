@@ -30,7 +30,7 @@ An interactive web-based tool inspired by the note headers used in the Forever �
 2. **Export Your Work**:
    - Click **Download as PNG** to save your design.
 3. **Support the Project**:
-   - If you enjoy this tool, consider [buying me a coffee](www.buymeacoffee.com/nbinding).
+   - If you enjoy this tool, consider [buying me a coffee](https://www.buymeacoffee.com/nbinding).
 
 ---
 
@@ -80,7 +80,7 @@ Contributions are welcome! Feel free to open an issue or submit a pull request.
 
 ## **Support**
 
-If you find this tool useful, consider [buying me a coffee](www.buymeacoffee.com/nbinding) ☕ to support its development.
+If you find this tool useful, consider [buying me a coffee](https://www.buymeacoffee.com/nbinding) ☕ to support its development.
 
 ---
 
