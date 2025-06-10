@@ -396,6 +396,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         const defaultPath = generateSinePath();
         updateShape(defaultPath);
+        document.getElementById("shape-selector").value = "sine";
       });
       document.getElementById("download-image").addEventListener("click", async () => {
         const svgElement = document.getElementById("halftone-svg");
