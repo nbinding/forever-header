@@ -1,0 +1,12 @@
+{
+  "name": "forever-header",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node test/shapes.test.js",
+    "test:features": "cucumber-js"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.3.0",
+    "selenium-webdriver": "^4.33.0"
+  }
+}
