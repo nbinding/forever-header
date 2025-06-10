@@ -46,15 +46,9 @@ An interactive web-based tool inspired by the note headers used in the Forever â
 
 To run the tool locally:
 
-1. Clone this repository:
-
-   git clone https://github.com/nbinding/forever-header.git
-
-2. Navigate to the project directory:
-
-   cd forever-header
-
-3. Open `index.html` in your preferred web browser.
+1. Clone the repository
+2. Navigate to the project directory
+3. Open `index.html` in your browser
 
 ## **Built With**
 
