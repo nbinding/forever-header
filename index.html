@@ -351,9 +351,19 @@
         const svgData = new XMLSerializer().serializeToString(svgElement);
         const canvgInstance = await canvg.Canvg.fromString(ctx, svgData);
         await canvgInstance.render();
-        let iconClass = document.getElementById("icon-input").value.trim();
-        let iconName = iconClass.split(" ").pop() || "default-icon";
-        iconName = iconName.replace(/^fa-/, "").replace(/[^a-zA-Z0-9_-]/g, "");
+        const iconClass = document.getElementById("icon-input").value.trim();
+        const classes = iconClass.split(/\s+/);
+        let iconName = "default-icon";
+        for (const cls of classes) {
+          if (
+            cls.startsWith("fa-") &&
+            !/^fa-(solid|regular|light|thin|duotone|brands|fw|xs|sm|lg|\d+x)$/i.test(cls)
+          ) {
+            iconName = cls.replace(/^fa-/, "");
+            break;
+          }
+        }
+        iconName = iconName.replace(/[^a-zA-Z0-9_-]/g, "");
         const filename = `forever-header-${iconName}.png`;
         const link = document.createElement("a");
         link.download = filename;
