@@ -1,0 +1,43 @@
+/* Fields, segmented control, toggles, choice rows. */
+
+.nb-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+/* fieldset defaults to a min-content width, which widens the page at large text sizes */
+fieldset.nb-field { min-inline-size: 0; margin: 0; padding: 0; border: 0; }
+fieldset.nb-field > legend { padding: 0; margin-bottom: 6px; }
+.nb-field__label { font-size: .95rem; font-weight: 600; }
+.nb-field__label small { font-weight: 400; color: var(--nb-muted); }
+.nb-field__hint { font-size: var(--nb-text-sm); color: var(--nb-muted); line-height: 1.5; }
+.nb-field__error { font-size: .9375rem; color: var(--nb-error); }
+.nb-input, .nb-select, .nb-textarea { width: 100%; min-height: 52px; padding: 12px 14px; border: 0; border-radius: var(--nb-radius-md); background: var(--nb-input-bg); box-shadow: inset 0 0 0 1.5px var(--nb-input-line); color: var(--nb-ink); font-size: 1rem; }
+.nb-input::placeholder, .nb-textarea::placeholder { color: var(--nb-faint); }
+.nb-input[aria-invalid="true"] { box-shadow: inset 0 0 0 2px var(--nb-error); }
+.nb-textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+.nb-input--mono, .nb-textarea--mono { font-family: var(--nb-font-mono); font-size: .875rem; }
+.nb-input-row { display: flex; gap: var(--nb-space-2); }
+
+/* Segmented control: a radiogroup of buttons */
+.nb-segmented { display: flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 14px; background: var(--nb-panel); }
+.nb-segmented > button { flex: 1 1 auto; min-height: var(--nb-tap); padding: 6px 12px; border: 0; border-radius: 10px; background: none; color: var(--nb-ink); font-size: var(--nb-text-sm); }
+.nb-segmented > button[aria-checked="true"], .nb-segmented > button[aria-pressed="true"] { background: var(--nb-accent); color: var(--nb-accent-ink); font-weight: 600; }
+
+/* Option tiles (e.g. text size choices) */
+.nb-options { display: flex; flex-wrap: wrap; gap: var(--nb-space-2); }
+.nb-options > button { flex: 1 1 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; padding: 10px; border: 0; border-radius: var(--nb-radius-md); background: var(--nb-panel); color: var(--nb-ink); font-size: .9375rem; line-height: 1.35; }
+.nb-options > button small { font-size: var(--nb-text-xs); color: var(--nb-muted); }
+.nb-options > button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--nb-ink); font-weight: 600; }
+
+/* Toggle: a real checkbox with a title and description */
+.nb-toggle { display: flex; align-items: flex-start; gap: var(--nb-space-3); cursor: pointer; }
+.nb-toggle input { width: 22px; height: 22px; margin: 2px 0 0; flex-shrink: 0; accent-color: var(--nb-accent); }
+.nb-toggle__text { display: flex; flex-direction: column; }
+.nb-toggle__text strong { font-weight: 600; }
+.nb-toggle__text small { font-size: var(--nb-text-sm); color: var(--nb-muted); line-height: 1.5; }
+
+/* Choice rows: a list of checkboxes or radios with a title and detail */
+.nb-choices { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--nb-space-2); }
+.nb-choice { display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 10px 14px; border-radius: var(--nb-radius-lg); background: var(--nb-panel); cursor: pointer; }
+.nb-choice input { width: 22px; height: 22px; margin: 0; flex-shrink: 0; accent-color: var(--nb-accent); }
+.nb-choice:has(input:checked) { box-shadow: inset 0 0 0 2px var(--nb-ink); }
+.nb-choice__text { display: flex; flex-direction: column; min-width: 0; }
+.nb-choice__text strong { font-weight: 600; }
+.nb-choice__text small { font-size: var(--nb-text-sm); color: var(--nb-muted); }

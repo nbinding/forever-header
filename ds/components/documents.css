@@ -1,0 +1,19 @@
+/* Documents: a paper preview for drafts in formal wording, gaps still to fill, and plain-language terms.
+   Paper stays light in dark mode, like a printout. */
+
+.nb-document { padding: 28px 22px; border-radius: var(--nb-radius-sm); background: var(--nb-paper); color: var(--nb-paper-ink); box-shadow: 0 1px 2px rgb(0 0 0 / .08), 0 8px 24px rgb(0 0 0 / .08); font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; font-size: .9375rem; line-height: 1.65; overflow-wrap: anywhere; }
+.nb-document__title { margin: var(--nb-space-4) 0 4px; text-align: center; font-family: inherit; font-size: .8125rem; font-weight: 700; letter-spacing: .08em; line-height: 1.4; text-transform: uppercase; }
+.nb-document__title:first-child { margin-top: 0; }
+.nb-document__centre { text-align: center; }
+.nb-document__para { display: grid; grid-template-columns: 2em minmax(0, 1fr); margin-top: 10px; }
+.nb-document__para--later { font-style: italic; }
+/* A gap still to fill: a dotted line with a plain label, so it reads as unfinished without colour */
+.nb-gap { display: inline-block; min-width: 6em; border-bottom: 2px dotted currentColor; font-family: var(--nb-font-body); font-size: .8125rem; font-style: normal; line-height: 1.3; }
+
+/* Term: a word with a plain-language explanation (see terms() in js/nb.js) */
+.nb-term { display: inline; padding: 0; margin: 0; border: 0; background: none; font: inherit; color: inherit; text-align: inherit; cursor: help; text-decoration: underline dotted; text-decoration-color: var(--nb-em); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.nb-term[aria-expanded="true"] { text-decoration-style: solid; }
+.nb-term-pop { position: fixed; z-index: 25; max-width: min(320px, calc(100vw - 24px)); padding: 12px 14px; border-radius: var(--nb-radius-md); background: var(--nb-ink); color: var(--nb-surface); box-shadow: 0 12px 30px rgb(0 0 0 / .25); font-family: var(--nb-font-body); font-size: .875rem; font-style: normal; font-weight: 400; line-height: 1.5; text-align: left; }
+.nb-term-pop[hidden] { display: none; }
+.nb-term-pop strong { display: block; margin-bottom: 2px; font-family: var(--nb-font-display); font-weight: var(--nb-weight-heading); font-size: 1rem; }
+.nb-term-pop--inline { position: static; display: block; margin-top: var(--nb-space-2); }

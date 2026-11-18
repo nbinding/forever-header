@@ -1,0 +1,73 @@
+/* Content blocks: share steps, preview, words, disclosure, poster, lists, how-it-works, privacy. */
+
+/* Share in steps ("beats") */
+.nb-beat { display: flex; flex-direction: column; gap: 14px; padding: var(--nb-space-6) 0; border-top: 1px solid var(--nb-line); }
+.nb-beat:first-child { border-top: 0; padding-top: var(--nb-space-2); }
+.nb-beat__head { display: flex; align-items: baseline; gap: var(--nb-space-3); font-weight: 600; font-size: var(--nb-text-lg); }
+.nb-beat__n { font-family: var(--nb-font-display); font-weight: var(--nb-weight-display); font-size: var(--nb-text-2xl); line-height: 1; letter-spacing: -0.03em; }
+.nb-preview { padding: var(--nb-space-4); border-radius: var(--nb-radius-lg); background: var(--nb-panel); font-size: .95rem; line-height: 1.5; white-space: pre-line; }
+.nb-words { font-family: var(--nb-font-display); font-weight: var(--nb-weight-heading); font-size: clamp(1.7rem, 8vw, 2.2rem); line-height: 1.1; letter-spacing: -0.03em; overflow-wrap: anywhere; }
+.nb-code-box { padding: var(--nb-space-3) var(--nb-space-4); border-radius: var(--nb-radius-lg); background: var(--nb-panel); font-size: .9375rem; }
+.nb-code-box strong { font-family: var(--nb-font-mono); font-size: 1.05rem; letter-spacing: .08em; }
+
+/* Disclosure */
+.nb-disclosure { border-top: 1px solid var(--nb-line); }
+.nb-disclosure > summary { display: flex; align-items: center; min-height: 52px; cursor: pointer; font-weight: 500; list-style: none; }
+.nb-disclosure > summary::-webkit-details-marker { display: none; }
+.nb-disclosure > summary::after { content: '+'; margin-left: auto; font-size: 1.3rem; color: var(--nb-muted); }
+.nb-disclosure[open] > summary::after { content: '\2212'; }
+.nb-disclosure > :not(summary) { margin-bottom: 14px; }
+
+/* Poster: the settled date as the hero */
+.nb-poster { position: relative; overflow: hidden; padding: 28px 24px 30px; border-radius: 26px; background: var(--nb-ink); color: var(--nb-accent-ink); }
+.nb-poster__what { position: relative; z-index: 1; margin-bottom: 18px; font-weight: 600; font-size: .95rem; opacity: .8; }
+.nb-poster__days { position: relative; z-index: 1; list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.nb-poster__days > li { display: grid; }
+.nb-poster__days > li + li { padding-top: 22px; border-top: 1px solid color-mix(in srgb, var(--nb-accent-ink) 22%, transparent); }
+.nb-poster__line { font-family: var(--nb-font-display); font-weight: var(--nb-weight-heading); font-size: 1.4rem; letter-spacing: -0.02em; line-height: 1.15; }
+.nb-poster__day { margin: 6px 0 4px -4px; font-family: var(--nb-font-display); font-weight: var(--nb-weight-display); font-size: clamp(6rem, 36vw, 9.5rem); line-height: .82; letter-spacing: -0.07em; }
+.nb-poster__note { margin-top: 8px; font-size: .95rem; line-height: 1.45; opacity: .85; }
+.nb-poster__note + .nb-poster__note { margin-top: 2px; }
+.nb-poster--multi .nb-poster__days > li { grid-template-columns: auto 1fr; column-gap: 18px; align-items: end; }
+.nb-poster--multi .nb-poster__day { grid-row: 1 / span 4; margin: 0; font-size: 4.6rem; }
+.nb-poster--multi .nb-poster__line { font-size: 1.1rem; }
+.nb-poster__hatch { position: absolute; right: -40px; top: -40px; width: 190px; height: 190px; border-radius: 40px; background: repeating-linear-gradient(45deg, var(--nb-accent-ink) 0 1.5px, transparent 1.5px 9px); opacity: .16; transform: rotate(8deg); }
+html[data-nb-font="dyslexic"] .nb-poster__day { font-size: 5rem; letter-spacing: 0; }
+/* A seal instead of the hatch, for something made official */
+.nb-poster__seal { position: absolute; right: -36px; top: -36px; width: 170px; height: 170px; border-radius: 50%; border: 1.5px solid color-mix(in srgb, var(--nb-accent-ink) 28%, transparent); }
+.nb-poster__seal::after { content: ''; position: absolute; inset: 24px; border-radius: 50%; border: 1.5px dashed color-mix(in srgb, var(--nb-accent-ink) 28%, transparent); }
+
+/* Lists */
+.nb-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--nb-space-2); }
+.nb-list__row { display: flex; align-items: center; gap: var(--nb-space-3); min-height: 56px; padding: 8px 14px; border-radius: 14px; background: var(--nb-panel); }
+.nb-list__main { flex: 1; display: flex; flex-direction: column; min-width: 0; text-decoration: none; color: inherit; }
+.nb-list__main strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.nb-list__main small, .nb-list__aside { font-size: var(--nb-text-sm); color: var(--nb-muted); }
+a.nb-list__main { min-height: var(--nb-tap); justify-content: center; }
+
+/* Action rows: a short menu of things to do, each with a badge, a title and a detail */
+.nb-actions { list-style: none; margin: 0; padding: 0; }
+.nb-actions > li + li { border-top: 1px solid var(--nb-line); }
+.nb-action { display: grid; grid-template-columns: 40px minmax(0, 1fr) 20px; gap: 14px; align-items: center; width: 100%; min-height: 72px; padding: 10px 0; border: 0; background: none; color: var(--nb-ink); font: inherit; text-align: left; text-decoration: none; overflow-wrap: anywhere; }
+.nb-action strong { display: block; font-weight: 600; }
+.nb-action small { display: block; font-size: var(--nb-text-sm); line-height: 1.45; color: var(--nb-muted); }
+.nb-action > svg { width: 20px; height: 20px; color: var(--nb-muted); }
+.nb-action:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+
+/* How it works */
+.nb-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.nb-steps > li { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 14px; overflow-wrap: anywhere; padding: var(--nb-space-4); border-radius: var(--nb-radius-lg); background: var(--nb-panel); }
+.nb-steps__n { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--nb-surface); font-family: var(--nb-font-display); font-weight: var(--nb-weight-display); }
+.nb-steps h3 { font-size: var(--nb-text-lg); font-weight: 600; margin-bottom: 2px; }
+.nb-steps p { font-size: .9375rem; color: var(--nb-muted); line-height: 1.55; }
+
+/* Section rule with a label */
+.nb-section { display: flex; align-items: center; gap: 14px; margin: var(--nb-space-8) 0 var(--nb-space-4); font-weight: 600; }
+.nb-section::after { content: ''; flex: 1; height: 1px; background: var(--nb-line); }
+
+/* Privacy line */
+.nb-privacy { display: flex; gap: var(--nb-space-3); font-size: var(--nb-text-sm); color: var(--nb-muted); line-height: 1.6; }
+.nb-privacy svg { width: 20px; height: 20px; margin-top: 2px; }
+
+/* Card (use sparingly; the system prefers space to boxes) */
+.nb-card { padding: var(--nb-space-5); border-radius: var(--nb-radius-lg); background: var(--nb-panel); }

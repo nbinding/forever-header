@@ -23,88 +23,35 @@
     <meta property="og:url" content="https://nbinding.github.io/forever-header/" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- Font Awesome -->
+    <meta name="color-scheme" content="light dark" />
+
+    <!-- Font Awesome: the icons drawn into the header -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- Canvg Library -->
+    <!-- Canvg: turns the SVG into a PNG -->
     <script src="https://cdn.jsdelivr.net/npm/canvg@3.0.7/lib/umd.min.js"></script>
 
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-        background-color: #f0f0f0;
-        padding: 10px;
-      }
-
-      .header {
-        font-size: 2rem;
-        font-weight: bold;
-        margin: 20px 0 10px;
-        text-align: center;
-      }
-
-      .rounded-box {
-        width: 100%;
-        max-width: 800px;
-        border-radius: 35px 35px 0 0;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ccc;
-        margin-bottom: 20px;
-      }
-      .rounded-box svg {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-
-      /* Group controls into sections */
-      .btn-container {
-        width: 100%;
-        max-width: 800px;
-      }
-      .control-section {
-        margin-bottom: 15px;
-      }
-      .control-section h6 {
-        margin-bottom: 5px;
-      }
-      /* Use Bootstrap grid classes for layout */
-      .footer {
-        margin-top: 20px;
-        font-size: 0.9rem;
-        text-align: center;
-      }
-    </style>
+    <!-- nbinding design system (a copy lives in ds/) -->
+    <link rel="stylesheet" href="ds/nb.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Header -->
-    <div class="header">Forever ✱ Header</div>
+    <header class="nb-topbar">
+      <span class="nb-brand">
+        <svg class="nb-brand__mark" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="1" width="24" height="24" rx="7" fill="currentColor"/><path d="M7 19 19 7M7 13l6-6M13 19l6-6" stroke="var(--nb-surface)" stroke-width="1.6" stroke-linecap="round"/><path d="M7 7l12 12M13 7l6 6M7 13l6 6" stroke="var(--nb-surface)" stroke-width="1.6" stroke-linecap="round" opacity=".45"/></svg>
+        Forever ✱ Header
+      </span>
+      <a class="nb-text-button" href="https://github.com/nbinding/forever-header" target="_blank" rel="noopener">View on GitHub</a>
+    </header>
 
-    <!-- GitHub Repo Link -->
-    <div class="mb-3">
-      <a href="https://github.com/nbinding/forever-header" target="_blank">
-        <img
-          src="https://img.shields.io/badge/GitHub-View%20on%20GitHub-black?style=for-the-badge&logo=github"
-          alt="GitHub Repository"
-        />
-      </a>
-    </div>
+    <main class="nb-page nb-stack">
+      <p class="nb-lead">Make a halftone header for your notes, then download it as a PNG.</p>
 
-    <!-- SVG Container -->
-    <div class="rounded-box">
+      <!-- Preview: this SVG is exactly what gets downloaded -->
+      <div class="rounded-box fh-preview">
       <svg
         id="halftone-svg"
         viewBox="0 0 800 200"
@@ -177,72 +124,67 @@
           </text>
         </g>
       </svg>
-    </div>
+      </div>
 
-    <!-- Controls -->
-    <div class="btn-container">
-      <!-- Shape Controls Section -->
-      <div class="control-section">
-        <h6>Shape Controls</h6>
-        <div class="row">
-          <div class="col-12">
-            <div class="input-group">
-              <select id="shape-selector" class="form-select">
-                <option value="mountain">Mountain Range</option>
-                <option value="circles">Circles</option>
-                <option value="sine">Sine Wave</option>
-                <option value="scalloped">Scalloped</option>
-              </select>
-              <button id="apply-shape" class="btn btn-dark">Apply/Randomise Shape</button>
-            </div>
-          </div>
+      <div class="nb-field">
+        <label class="nb-field__label" for="shape-selector">Shape</label>
+        <div class="nb-input-row">
+          <select id="shape-selector" class="nb-select">
+            <option value="mountain">Mountain range</option>
+            <option value="circles">Circles</option>
+            <option value="sine">Sine wave</option>
+            <option value="scalloped">Scalloped</option>
+          </select>
+          <button id="apply-shape" class="nb-button nb-button--secondary fh-row-button" type="button">New shape</button>
+        </div>
+        <p class="nb-field__hint">Each press draws a fresh random version of the shape.</p>
+      </div>
+
+      <div class="nb-field">
+        <label class="nb-field__label" for="icon-input">Icon</label>
+        <div class="nb-input-row">
+          <input
+            id="icon-input"
+            type="text"
+            class="nb-input"
+            placeholder="fa-solid fa-star"
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="icon-hint icon-error"
+          />
+          <button id="apply-icon" class="nb-button nb-button--secondary fh-row-button" type="button">Use icon</button>
+        </div>
+        <p id="icon-hint" class="nb-field__hint">Any Font Awesome solid icon class, like <span class="nb-mono">fa-solid fa-rocket</span>.</p>
+        <p id="icon-error" class="nb-field__error" hidden>That isn’t a Font Awesome icon we can find. Check the class and try again.</p>
+        <div class="nb-row">
+          <button id="randomise-icon" class="nb-chip nb-chip--sm" type="button">Surprise me</button>
         </div>
       </div>
 
-      <!-- Icon Controls Section -->
-      <div class="control-section">
-        <h6>Icon Controls</h6>
-        <div class="row">
-          <div class="col-12">
-            <div class="input-group">
-              <input
-                id="icon-input"
-                type="text"
-                class="form-control"
-                placeholder="Enter Font Awesome class (e.g., fa-solid fa-star)"
-              />
-              <button id="apply-icon" class="btn btn-dark">Apply Icon</button>
-            </div>
-          </div>
+      <label class="nb-toggle">
+        <input id="toggle-icon" type="checkbox" checked />
+        <span class="nb-toggle__text">
+          <strong>Show the icon</strong>
+          <small>Turn this off for just the wave.</small>
+        </span>
+      </label>
+
+      <div class="nb-field">
+        <span class="nb-field__label" id="dots-label">Dots</span>
+        <div class="nb-row">
+          <button id="toggle-dither" class="nb-button nb-button--secondary" type="button" aria-describedby="dots-now">Swap dot colours</button>
         </div>
-        <div class="row mt-2">
-          <div class="col-6">
-            <button id="randomise-icon" class="btn btn-dark w-100">Randomise Icon</button>
-          </div>
-          <div class="col-6">
-            <button id="toggle-icon" class="btn btn-dark w-100">Toggle Icon Display</button>
-          </div>
-        </div>
+        <p id="dots-now" class="nb-field__hint" aria-live="polite">Black dots on the wave, white dots in the icon.</p>
       </div>
 
-      <!-- Other Actions Section -->
-      <div class="control-section">
-        <h6>Other Actions</h6>
-        <div class="row">
-          <div class="col-6">
-            <button id="toggle-dither" class="btn btn-dark w-100">Toggle Dither Colour</button>
-          </div>
-          <div class="col-6">
-            <button id="download-image" class="btn btn-dark w-100">Download as PNG</button>
-          </div>
-        </div>
+      <div class="nb-dock">
+        <button id="download-image" class="nb-button nb-button--block" type="button">Download PNG</button>
       </div>
-    </div>
 
-    <!-- Footer -->
-    <div class="footer">
-      Made with 🤖 by <a href="https://github.com/nbinding" target="_blank">nbinding</a>
-    </div>
+      <p class="nb-small fh-footer">
+        Made with 🤖 by <a href="https://github.com/nbinding" target="_blank" rel="noopener">nbinding</a>
+      </p>
+    </main>
 
     <script type="module">
       import {
@@ -265,11 +207,13 @@
         setTimeout(() => {
           const computedStyle = window.getComputedStyle(hiddenIcon, "::before");
           const unicode = computedStyle.content.replace(/['"]/g, "");
-          if (unicode) {
-            updateIcon(unicode);
-          } else {
-            alert("Invalid Font Awesome class. Try another.");
-          }
+          const input = document.getElementById("icon-input");
+          const error = document.getElementById("icon-error");
+          // An unknown class has no ::before glyph ("none" or empty)
+          const found = unicode && unicode !== "none";
+          error.hidden = found;
+          input.setAttribute("aria-invalid", found ? "false" : "true");
+          if (found) updateIcon(unicode);
           document.body.removeChild(hiddenIcon);
         }, 100);
       });
@@ -299,14 +243,14 @@
         ditherColour = ditherColour === "black" ? "white" : "black";
         ditherPath.setAttribute("fill", `url(#halftone-${ditherColour})`);
         overlayElement.setAttribute("fill", `url(#halftone-${ditherColour === "black" ? "white" : "black"})`);
+        const iconColour = ditherColour === "black" ? "white" : "black";
+        document.getElementById("dots-now").textContent =
+          `${ditherColour[0].toUpperCase() + ditherColour.slice(1)} dots on the wave, ${iconColour} dots in the icon.`;
       });
-      document.getElementById("toggle-icon").addEventListener("click", () => {
-        const icon = document.getElementById("fa-icon-overlay");
-        if (icon.getAttribute("visibility") === "hidden") {
-          icon.setAttribute("visibility", "visible");
-        } else {
-          icon.setAttribute("visibility", "hidden");
-        }
+      document.getElementById("toggle-icon").addEventListener("change", (event) => {
+        document
+          .getElementById("fa-icon-overlay")
+          .setAttribute("visibility", event.target.checked ? "visible" : "hidden");
       });
       function updateShape(newPath) {
         document.getElementById("halftone-path").setAttribute("d", newPath);

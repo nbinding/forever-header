@@ -10,7 +10,7 @@ An interactive web-based tool inspired by the note headers used in the Forever �
 - ✨ **Font Awesome Integration**: Incorporate any Font Awesome icon into your designs.
 - 🔄 **Toggle Dither Colours**: Switch between black and white halftone styles to suit your aesthetic.
 - 📤 **Export Designs**: Download your creations as high-quality PNG files.
-- 🖥️ **Responsive UI**: Fully responsive design compatible with all modern browsers.
+- 🖥️ **Responsive UI**: Works from 320px wide, in light and dark mode, by keyboard and screen reader.
 
 ---
 
@@ -24,11 +24,11 @@ An interactive web-based tool inspired by the note headers used in the Forever �
 ## **How to Use**
 
 1. **Customise Your Design**:
-   - Click **Randomise Shape** to generate unique wavy backgrounds.
-   - Enter a Font Awesome class (e.g., `fa-solid fa-star`) or click **Randomize Icon** for a surprise icon.
-   - Use **Toggle Dither Colour** to switch halftone styles.
+   - Pick a shape and press **New shape** to generate a unique wavy background.
+   - Enter a Font Awesome class (e.g., `fa-solid fa-star`) and press **Use icon**, or press **Surprise me**.
+   - Turn **Show the icon** off for just the wave, and use **Swap dot colours** to switch halftone styles.
 2. **Export Your Work**:
-   - Click **Download as PNG** to save your design.
+   - Press **Download PNG** to save your design.
 3. **Support the Project**:
    - If you enjoy this tool, consider [buying me a coffee](https://www.buymeacoffee.com/nbinding).
 
@@ -55,7 +55,7 @@ To run the tool locally:
 - **HTML5**: For the structure.
 - **CSS3**: For styling and responsiveness.
 - **JavaScript**: To handle interactivity and dynamic SVG generation.
-- **Bootstrap**: For layout and design consistency.
+- **[nbinding design system](https://github.com/nbinding/nbinding-design-system)**: Type, colour, light and dark themes, and the form controls. A copy lives in `ds/`; update it by copying the design system's `src/` over that folder.
 - **Font Awesome**: For adding versatile icons.
 - **Canvg**: To export SVGs as high-quality PNGs.
 

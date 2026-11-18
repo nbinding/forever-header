@@ -1,0 +1,50 @@
+/* Page chrome: top bar, breadcrumb, stepper, sidebar, dock. */
+
+.nb-topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px var(--nb-space-3); max-width: var(--nb-page); margin: 0 auto; padding: max(18px, env(safe-area-inset-top)) var(--nb-space-4) var(--nb-space-3); }
+.nb-topbar__actions { display: flex; flex-wrap: wrap; gap: var(--nb-space-2); }
+.nb-breadcrumb { display: flex; align-items: center; gap: 10px; font-size: var(--nb-text-sm); color: var(--nb-muted); }
+.nb-breadcrumb strong { color: var(--nb-ink); font-weight: 600; }
+
+/* Stepper: whose turn it is */
+.nb-stepper { list-style: none; display: grid; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; gap: 6px; margin: 0; padding: 0; }
+.nb-stepper li { display: flex; flex-direction: column; gap: 6px; font-size: var(--nb-text-xs); line-height: 1.3; color: var(--nb-muted); overflow-wrap: anywhere; }
+.nb-stepper li::before { content: ''; height: 2px; border-radius: 1px; background: var(--nb-line); }
+.nb-stepper li[data-state="done"] { color: var(--nb-muted); }
+.nb-stepper li[data-state="done"]::before { background: var(--nb-muted); }
+.nb-stepper li[aria-current="step"] { color: var(--nb-ink); font-weight: 600; }
+.nb-stepper li[aria-current="step"]::before { background: var(--nb-accent); }
+
+/* Sidebar navigation (desktop) */
+.nb-sidebar { display: flex; flex-direction: column; gap: var(--nb-space-4); width: min(300px, 100%); padding: var(--nb-space-7) var(--nb-space-6) var(--nb-space-6); background: var(--nb-panel); }
+.nb-sidebar__label { font-size: var(--nb-text-xs); letter-spacing: .12em; text-transform: uppercase; color: var(--nb-muted); }
+.nb-nav { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.nb-nav__item { display: flex; align-items: center; gap: var(--nb-space-3); width: 100%; padding: 14px 10px; border: 0; border-radius: var(--nb-radius-md); background: none; color: var(--nb-muted); text-align: left; text-decoration: none; }
+a.nb-nav__item:hover, button.nb-nav__item:hover { background: var(--nb-surface); color: var(--nb-ink); }
+.nb-nav__item strong { display: block; font-size: .9375rem; font-weight: 600; color: inherit; }
+.nb-nav__item small { display: block; margin-top: 2px; font-size: .8125rem; color: var(--nb-muted); }
+.nb-nav__num { display: inline-grid; place-items: center; flex-shrink: 0; min-width: 30px; height: 30px; border-radius: 50%; background: var(--nb-surface); color: var(--nb-ink); font-size: .8125rem; font-variant-numeric: tabular-nums; box-shadow: inset 0 0 0 1px var(--nb-line); }
+.nb-nav__item[aria-current] { background: var(--nb-surface); color: var(--nb-ink); }
+.nb-nav__item[aria-current] .nb-nav__num { background: var(--nb-accent); color: var(--nb-accent-ink); box-shadow: none; }
+.nb-progress { display: block; width: 100%; height: 4px; border: 0; border-radius: 2px; background: var(--nb-line); overflow: hidden; appearance: none; }
+.nb-progress::-webkit-progress-bar { background: var(--nb-line); }
+.nb-progress::-webkit-progress-value { background: var(--nb-accent); }
+.nb-progress::-moz-progress-bar { background: var(--nb-accent); }
+
+/* Dock: the count, a detail and the one next action, sticky at the bottom */
+.nb-dock { position: sticky; bottom: 0; z-index: 4; display: flex; flex-direction: column; gap: var(--nb-space-3); padding: 14px 0 max(16px, env(safe-area-inset-bottom)); background: var(--nb-surface); border-top: 1px solid var(--nb-line); }
+.nb-dock__row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px var(--nb-space-3); }
+.nb-dock__summary { font-family: var(--nb-font-display); font-weight: var(--nb-weight-heading); font-size: var(--nb-text-xl); letter-spacing: -0.02em; }
+.nb-dock__detail { font-size: var(--nb-text-sm); color: var(--nb-muted); }
+html:has(.nb-dock):not(:has(.nb-sheet, .nb-dialog)) { scroll-padding-bottom: calc(150px * var(--nb-text-scale, 1)); }
+
+/* Stepper as bars: for many sections (labels stay, for screen readers) */
+.nb-stepper--bars { align-items: end; gap: 4px; }
+.nb-stepper--bars li { justify-content: flex-end; }
+.nb-stepper--bars li[aria-current="step"]::before { height: 8px; border-radius: 4px; }
+
+/* Tab bar: an app's main areas, at the bottom on a phone */
+.nb-tabbar { position: sticky; bottom: 0; z-index: 4; display: grid; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column; padding: 4px 4px max(10px, env(safe-area-inset-bottom)); border-top: 1px solid var(--nb-line); background: var(--nb-surface); }
+.nb-tabbar__item { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-width: 0; min-height: 56px; padding: 4px 2px; color: var(--nb-muted); font-size: var(--nb-text-xs); line-height: 1.2; text-align: center; text-decoration: none; overflow-wrap: anywhere; }
+.nb-tabbar__item svg { width: 22px; height: 22px; }
+.nb-tabbar__item[aria-current] { color: var(--nb-ink); font-weight: 700; }
+.nb-tabbar__item[aria-current]::before { content: ''; position: absolute; top: -5px; left: 30%; right: 30%; height: 3px; border-radius: 0 0 3px 3px; background: var(--nb-accent); }

@@ -1,0 +1,158 @@
+/* nbinding design system: tokens.
+   Two app looks share every component. Calshare (the default): dark grey and white, Bricolage Grotesque for
+   display and dates, Inter for everything else. Stead (`data-nb-app="stead"`): forest greens on warm paper,
+   Source Serif 4 for display. Themes: light by default, dark from the device, `data-theme` on <html>, or
+   `.nb-light` / `.nb-dark` on any element. */
+
+:root, .nb-light {
+  --nb-surface: #ffffff;
+  --nb-ink: #1b1c1e;
+  --nb-muted: #5c5f64;
+  --nb-faint: #8c8f93;
+  --nb-line: #e4e4e1;
+  --nb-panel: #f4f4f2;
+  --nb-field: #ffffff;
+  --nb-accent: #1b1c1e;
+  --nb-accent-hover: #34363a;
+  --nb-accent-ink: #ffffff;
+  --nb-ring: #6f7377;
+  --nb-error: #a33d32;
+  --nb-scrim: rgb(0 0 0 / .5);
+  --nb-em: #5c5f64;
+  --nb-input-bg: #f4f4f2;
+  --nb-input-line: transparent;
+  --nb-paper: #ffffff;
+  --nb-paper-ink: #1b1c1e;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --nb-surface: #141517; --nb-ink: #f1f1ef; --nb-muted: #a7a9ac; --nb-faint: #7d8084; --nb-line: #2e3033;
+    --nb-panel: #212225; --nb-field: #1a1b1e; --nb-accent: #f1f1ef; --nb-accent-hover: #ffffff; --nb-accent-ink: #141517;
+    --nb-ring: #b9bbbe; --nb-error: #ffb3a7; --nb-scrim: rgb(0 0 0 / .62);
+    --nb-em: #a7a9ac; --nb-input-bg: #212225; --nb-input-line: transparent; --nb-paper: #f4f4f2; --nb-paper-ink: #1b1c1e; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"], .nb-dark {
+  --nb-surface: #141517; --nb-ink: #f1f1ef; --nb-muted: #a7a9ac; --nb-faint: #7d8084; --nb-line: #2e3033;
+  --nb-panel: #212225; --nb-field: #1a1b1e; --nb-accent: #f1f1ef; --nb-accent-hover: #ffffff; --nb-accent-ink: #141517;
+  --nb-ring: #b9bbbe; --nb-error: #ffb3a7; --nb-scrim: rgb(0 0 0 / .62);
+    --nb-em: #a7a9ac; --nb-input-bg: #212225; --nb-input-line: transparent; --nb-paper: #f4f4f2; --nb-paper-ink: #1b1c1e; color-scheme: dark;
+}
+/* An explicit light section inside a dark page */
+:root[data-theme="dark"] .nb-light, .nb-dark .nb-light {
+  --nb-surface: #ffffff; --nb-ink: #1b1c1e; --nb-muted: #5c5f64; --nb-faint: #8c8f93; --nb-line: #e4e4e1;
+  --nb-panel: #f4f4f2; --nb-field: #ffffff; --nb-accent: #1b1c1e; --nb-accent-hover: #34363a; --nb-accent-ink: #ffffff;
+  --nb-ring: #6f7377; --nb-error: #a33d32; --nb-scrim: rgb(0 0 0 / .5);
+  --nb-em: #5c5f64; --nb-input-bg: #f4f4f2; --nb-input-line: transparent; --nb-paper: #ffffff; --nb-paper-ink: #1b1c1e; color-scheme: light;
+}
+
+:root {
+  /* Type */
+  --nb-font-display: 'Bricolage Grotesque', 'Inter', system-ui, sans-serif;
+  --nb-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --nb-font-mono: ui-monospace, Menlo, Consolas, monospace;
+  --nb-text-xs: .75rem;
+  --nb-text-sm: .875rem;
+  --nb-text-base: 1rem;
+  --nb-text-lg: 1.0625rem;
+  --nb-text-xl: 1.35rem;
+  --nb-text-2xl: 1.75rem;
+  --nb-text-display: clamp(2.3rem, 10vw, 3.2rem);
+  --nb-leading: 1.6;
+  --nb-tracking-display: -0.045em;
+  --nb-weight-display: 800;
+  --nb-weight-heading: 700;
+
+  /* Space (4px steps) */
+  --nb-space-1: 4px;
+  --nb-space-2: 8px;
+  --nb-space-3: 12px;
+  --nb-space-4: 16px;
+  --nb-space-5: 20px;
+  --nb-space-6: 24px;
+  --nb-space-7: 32px;
+  --nb-space-8: 48px;
+
+  /* Shape */
+  --nb-radius-sm: 8px;
+  --nb-radius-md: 12px;
+  --nb-radius-lg: 16px;
+  --nb-radius-xl: 22px;
+  --nb-radius-pill: 999px;
+  --nb-radius-cell: 14px;
+
+  /* Sizes */
+  --nb-tap: 44px;
+  --nb-button: 60px;
+  --nb-page: 640px;
+
+  /* Motion */
+  --nb-duration: 120ms;
+  --nb-ease: cubic-bezier(.2, .7, .3, 1);
+
+}
+
+/* ===== Stead =====
+   Set data-nb-app="stead" on <html> (or any element) for Stead's look. Every component follows. */
+[data-nb-app="stead"] {
+  /* Stead type and shape */
+  --nb-font-display: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --nb-weight-display: 400;
+  --nb-weight-heading: 400;
+  --nb-tracking-display: -0.025em;
+  --nb-radius-sm: 6px;
+  --nb-radius-md: 10px;
+  --nb-radius-lg: 14px;
+  --nb-radius-xl: 22px;
+  --nb-radius-cell: 10px;
+}
+[data-nb-app="stead"], [data-nb-app="stead"] .nb-light {
+  --nb-surface: #fbfaf7;
+  --nb-ink: #233a3e;
+  --nb-muted: #55645a;
+  --nb-faint: #7a8b7d;
+  --nb-line: #dfe3d8;
+  --nb-panel: #eef1e8;
+  --nb-field: #ffffff;
+  --nb-accent: #29464a;
+  --nb-accent-hover: #1d3437;
+  --nb-accent-ink: #ffffff;
+  --nb-ring: #4f7069;
+  --nb-error: #a33d32;
+  --nb-scrim: rgb(16 32 28 / .5);
+  --nb-em: #5f7560;
+  --nb-input-bg: #ffffff;
+  --nb-input-line: #7a8b7d;
+  --nb-paper: #fffefa;
+  --nb-paper-ink: #1d2b2d;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-nb-app="stead"]:not([data-theme="light"]) {
+    --nb-surface: #0c1f1a; --nb-ink: #e3ede2; --nb-muted: #b7c8b9; --nb-faint: #86a08c; --nb-line: #2f4a3d;
+    --nb-panel: #16302a; --nb-field: #10271f; --nb-accent: #b6d5b3; --nb-accent-hover: #cfe6cc; --nb-accent-ink: #10231a;
+    --nb-ring: #b6d5b3; --nb-error: #ffb3a7; --nb-scrim: rgb(0 0 0 / .62);
+    --nb-em: #9db89a; --nb-input-bg: #10271f; --nb-input-line: #789880; --nb-paper: #f4f1e8; --nb-paper-ink: #1d2b2d; color-scheme: dark;
+  }
+}
+:root[data-nb-app="stead"][data-theme="dark"], [data-nb-app="stead"] .nb-dark, .nb-dark[data-nb-app="stead"] {
+  --nb-surface: #0c1f1a; --nb-ink: #e3ede2; --nb-muted: #b7c8b9; --nb-faint: #86a08c; --nb-line: #2f4a3d;
+  --nb-panel: #16302a; --nb-field: #10271f; --nb-accent: #b6d5b3; --nb-accent-hover: #cfe6cc; --nb-accent-ink: #10231a;
+  --nb-ring: #b6d5b3; --nb-error: #ffb3a7; --nb-scrim: rgb(0 0 0 / .62);
+  --nb-em: #9db89a; --nb-input-bg: #10271f; --nb-input-line: #789880; --nb-paper: #f4f1e8; --nb-paper-ink: #1d2b2d; color-scheme: dark;
+}
+:root[data-nb-app="stead"][data-theme="dark"] .nb-light, [data-nb-app="stead"] .nb-dark .nb-light {
+  --nb-surface: #fbfaf7; --nb-ink: #233a3e; --nb-muted: #55645a; --nb-faint: #7a8b7d; --nb-line: #dfe3d8;
+  --nb-panel: #eef1e8; --nb-field: #ffffff; --nb-accent: #29464a; --nb-accent-hover: #1d3437; --nb-accent-ink: #ffffff;
+  --nb-ring: #4f7069; --nb-error: #a33d32; --nb-scrim: rgb(16 32 28 / .5);
+  --nb-em: #5f7560; --nb-input-bg: #ffffff; --nb-input-line: #7a8b7d; --nb-paper: #fffefa; --nb-paper-ink: #1d2b2d; color-scheme: light;
+}
+
+/* The signature: two hatch directions. Yours one way, theirs the other; where they meet, solid.
+   Declared on every theme scope so the ink colour inside them is that scope's ink. */
+:root, .nb-light, .nb-dark, [data-nb-app] {
+  --nb-hatch-a: repeating-linear-gradient(45deg, var(--nb-ink) 0 1.5px, transparent 1.5px 7px);
+  --nb-hatch-b: repeating-linear-gradient(-45deg, var(--nb-ink) 0 1.5px, transparent 1.5px 7px);
+}

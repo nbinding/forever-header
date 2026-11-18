@@ -1,0 +1,20 @@
+/* Forever Header: the few layout rules on top of the nbinding design system (ds/). Tokens only. */
+
+/* The header image is 800px wide, so the page is a little wider than the system's default. */
+body { --nb-page: calc(800px + 2 * var(--nb-space-4)); }
+
+/* Preview frame: the same rounded top as the exported image. */
+.fh-preview {
+  overflow: hidden;
+  border-radius: 35px 35px 0 0;
+  box-shadow: 0 0 0 1px var(--nb-line);
+  /* The image's lower half is transparent: show it on paper in both themes, as it'll sit in a note. */
+  background: var(--nb-paper);
+}
+.fh-preview svg { display: block; width: 100%; height: auto; }
+
+/* Buttons beside a field keep their label on one line. */
+.fh-row-button { flex: none; min-height: 52px; padding-block: 10px; font-size: 1rem; }
+
+.fh-footer { text-align: center; }
+.fh-footer a { color: inherit; }
