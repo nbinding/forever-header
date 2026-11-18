@@ -1,0 +1,48 @@
+/* Base: reset, type, focus, utilities and the reader's display settings. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; font-size: calc(16px * var(--nb-text-scale, 1)); }
+body { margin: 0; background: var(--nb-surface); color: var(--nb-ink); font: var(--nb-text-base)/var(--nb-leading) var(--nb-font-body); -webkit-font-smoothing: antialiased; font-synthesis: none; }
+h1, h2, h3, h4, p, ul, ol, figure { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:disabled { cursor: default; }
+a { color: inherit; }
+img, svg { display: block; flex-shrink: 0; }
+:focus-visible { outline: 3px solid var(--nb-ring); outline-offset: 3px; }
+
+/* Headings */
+.nb-display, .nb-h1 { font-family: var(--nb-font-display); font-weight: var(--nb-weight-display); font-size: var(--nb-text-display); line-height: 1; letter-spacing: var(--nb-tracking-display); }
+.nb-h2 { font-family: var(--nb-font-display); font-weight: var(--nb-weight-heading); font-size: 1.5rem; line-height: 1.2; letter-spacing: -0.02em; }
+.nb-h3 { font-size: var(--nb-text-lg); font-weight: 600; line-height: 1.35; }
+.nb-context { font-size: .95rem; color: var(--nb-muted); }
+.nb-lead { font-size: var(--nb-text-lg); line-height: 1.65; color: var(--nb-muted); }
+.nb-small { font-size: var(--nb-text-sm); line-height: 1.55; color: var(--nb-muted); }
+.nb-label { font-size: .95rem; font-weight: 600; }
+.nb-mono { font-family: var(--nb-font-mono); font-size: .92em; }
+.nb-eyebrow { font-size: var(--nb-text-xs); font-weight: 600; letter-spacing: .12em; line-height: 1.5; text-transform: uppercase; color: var(--nb-muted); }
+/* A second, softer line in a heading: "One agreement. <em>Fourteen steady steps.</em>" */
+:is(.nb-display, .nb-h1, .nb-h2) em { font-style: italic; color: var(--nb-em); }
+
+/* Layout */
+.nb-page { max-width: var(--nb-page); margin: 0 auto; padding: var(--nb-space-3) var(--nb-space-4) var(--nb-space-8); }
+.nb-stack { display: flex; flex-direction: column; gap: var(--nb-space-4); }
+.nb-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--nb-space-2); }
+.nb-rule { border: 0; border-top: 1px solid var(--nb-line); margin: var(--nb-space-6) 0; }
+
+/* Utilities */
+.nb-sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.nb-skip { position: absolute; left: var(--nb-space-4); top: -100px; z-index: 30; padding: var(--nb-space-3) var(--nb-space-4); border-radius: var(--nb-radius-md); background: var(--nb-accent); color: var(--nb-accent-ink); font-weight: 600; text-decoration: none; }
+.nb-skip:focus { top: var(--nb-space-3); }
+body.nb-locked { overflow: hidden; }
+
+/* Reader's display settings, set on <html> (see js/nb.js: nb.prefs) */
+html[data-nb-font="sans"] body, html[data-nb-font="sans"] :is(button, input, textarea, select) { font-family: Arial, Helvetica, sans-serif; }
+html[data-nb-font="sans"] :is(.nb-display, .nb-h1, .nb-h2, .nb-brand, .nb-cal__month, .nb-cell__num, .nb-poster__day, .nb-poster__line, .nb-words, .nb-beat__n, .nb-dock__summary, .nb-sum__total, .nb-when b, .nb-answers dd, .nb-icon-list h3, .nb-term-pop strong, .nb-document) { font-family: Arial, Helvetica, sans-serif; letter-spacing: -0.01em; }
+html[data-nb-font="dyslexic"] :is(body, button, input, textarea, select, h1, h2, h3, p, span, strong, small, em, label, legend, code) { font-family: OpenDyslexic, Arial, sans-serif !important; letter-spacing: normal; }
+html[data-nb-font="dyslexic"] :is(.nb-display, .nb-h1) { font-size: clamp(1.7rem, 6.5vw, 2.3rem); line-height: 1.4; }
+html[data-nb-spacing="true"] :is(p, label, button, input, textarea, li, small) { letter-spacing: .035em; word-spacing: .1em; }
+html[data-nb-spacing="true"] :is(p, li, label, textarea) { line-height: 1.9; }
+html[data-nb-motion="true"] *, html[data-nb-motion="true"] *::before, html[data-nb-motion="true"] *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+/* Long single words (e.g. "Accessibility") at large text sizes must break rather than widen the page. */
+:is(h1, h2, h3, .nb-display, .nb-h1, .nb-h2, .nb-h3) { overflow-wrap: anywhere; hyphens: auto; }

@@ -1,0 +1,56 @@
+/* Journey: progress through a long task. Status marks, timeline, icon badges, icon lists (e.g. outcomes),
+   answer summaries and dated lists. Status reads by shape, never colour alone: a plain number (to do), a ring
+   (now), solid with a tick (done), dotted with "?" (come back to this). */
+
+.nb-status { display: inline-grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; font-size: .8125rem; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; color: var(--nb-muted); }
+.nb-status svg { width: 16px; height: 16px; }
+.nb-status--now { box-shadow: inset 0 0 0 2px var(--nb-ink); color: var(--nb-ink); }
+.nb-status--done { background: var(--nb-accent); color: var(--nb-accent-ink); }
+.nb-status--later { outline: 2px dotted var(--nb-ink); outline-offset: -2px; color: var(--nb-ink); font-weight: 800; }
+.nb-status--sm { width: 28px; height: 28px; }
+.nb-status--sm svg { width: 14px; height: 14px; }
+
+/* Timeline: every step at a glance, the current one marked */
+.nb-timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.nb-timeline__item { display: grid; grid-template-columns: 32px minmax(0, 1fr); gap: var(--nb-space-3); align-items: start; padding: 8px 0; }
+.nb-timeline__title { display: block; padding-top: 5px; font-weight: 500; line-height: 1.35; overflow-wrap: anywhere; color: inherit; }
+a.nb-timeline__title { text-underline-offset: 3px; text-decoration-color: var(--nb-faint); }
+.nb-timeline__detail { display: block; font-size: var(--nb-text-sm); line-height: 1.45; color: var(--nb-muted); }
+.nb-timeline__item--done .nb-timeline__title { font-weight: 400; color: var(--nb-muted); }
+.nb-timeline__item[aria-current] .nb-timeline__title { font-weight: 700; }
+.nb-timeline__phase { padding: var(--nb-space-3) 0 2px 44px; font-size: var(--nb-text-xs); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--nb-muted); overflow-wrap: anywhere; }
+
+/* Badges: an icon in a circle. Pair each with a shape (solid, ring, dashed, plain) as well as an icon. */
+.nb-badge { display: inline-grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--nb-panel); color: var(--nb-ink); }
+.nb-badge svg { width: 20px; height: 20px; }
+.nb-badge--solid { background: var(--nb-accent); color: var(--nb-accent-ink); }
+.nb-badge--ring { background: none; box-shadow: inset 0 0 0 2px var(--nb-ink); }
+.nb-badge--dashed { background: none; border: 2px dashed var(--nb-ink); }
+
+/* Icon list: a few possibilities, each with a badge, what it means and what to do */
+.nb-icon-list { list-style: none; margin: 0; padding: 0; }
+.nb-icon-list > li { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; padding: var(--nb-space-4) 0; border-top: 1px solid var(--nb-line); overflow-wrap: anywhere; }
+.nb-icon-list > li:last-child { border-bottom: 1px solid var(--nb-line); }
+.nb-icon-list h3 { font-family: var(--nb-font-display); font-weight: var(--nb-weight-heading); font-size: 1.2rem; line-height: 1.3; }
+.nb-icon-list p { font-size: .9375rem; line-height: 1.55; }
+.nb-icon-list__then { margin-top: 4px; color: var(--nb-muted); }
+
+/* Answers: a summary of what someone entered, to check before moving on */
+.nb-answers { margin: 0; display: flex; flex-direction: column; }
+.nb-answers__row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--nb-space-3); align-items: center; min-height: 60px; padding: 8px 0; border-top: 1px solid var(--nb-line); }
+.nb-answers__row:last-child { border-bottom: 1px solid var(--nb-line); }
+.nb-answers dt { display: flex; align-items: center; gap: var(--nb-space-3); min-width: 0; font-size: .9375rem; line-height: 1.4; overflow-wrap: anywhere; }
+.nb-answers dt small { display: block; font-size: var(--nb-text-sm); color: var(--nb-muted); }
+.nb-answers dd { margin: 0; max-width: 50vw; text-align: right; font-family: var(--nb-font-display); font-weight: var(--nb-weight-heading); font-size: 1.2rem; line-height: 1.25; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.nb-answers dd :is(a, button) { font-family: var(--nb-font-body); font-size: .9375rem; }
+
+/* Dated list: what happens next, and when */
+.nb-dates { list-style: none; margin: 0; padding: 0; }
+.nb-dates > li { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 0; border-top: 1px solid var(--nb-line); overflow-wrap: anywhere; }
+.nb-dates > li:last-child { border-bottom: 1px solid var(--nb-line); }
+.nb-dates strong { display: block; font-weight: 600; line-height: 1.35; }
+.nb-dates small { display: block; font-size: var(--nb-text-sm); line-height: 1.45; color: var(--nb-muted); }
+.nb-when { display: flex; flex-direction: column; align-items: center; padding: 6px 0; border-radius: var(--nb-radius-md); background: var(--nb-panel); line-height: 1.1; }
+.nb-when b { font-family: var(--nb-font-display); font-weight: var(--nb-weight-heading); font-size: 1.6rem; }
+.nb-when span { font-size: var(--nb-text-xs); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--nb-muted); }
+html[data-nb-font="dyslexic"] .nb-when b { font-size: 1.2rem; }
